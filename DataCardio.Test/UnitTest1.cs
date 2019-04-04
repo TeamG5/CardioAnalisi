@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DataCardio;
 
 namespace DataCardio.Test
 {
@@ -7,8 +8,12 @@ namespace DataCardio.Test
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void TestMaggioredi0()
         {
+            int battito = 5;
+            string risposta = "";
+
+            risposta = CardioLibrary.DataCardio.BattitoMaggiore(battito);
         }
     }
 }
