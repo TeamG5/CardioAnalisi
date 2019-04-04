@@ -8,7 +8,7 @@ namespace DataCardio.Test
     {
         [TestMethod]
         public void TestMethod1()
-        {
+        { 
         }
     }
 }
