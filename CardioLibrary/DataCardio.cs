@@ -47,5 +47,17 @@ namespace CardioLibrary
             }
             return msg1;
         }
+        public static string Calorie(string sesso,int a,double p,double t,double f)
+        {
+            string risposta = "";
+           if(sesso==""||a==0||p==0||t==0||f==0)
+           {
+                risposta = "Attenzione i valori non possono essere accettati";
+           }
+           else if(sesso=="maschio")
+           {
+                 double c =([(a * 0.2017) + (p * 0.199) + (f * 0.6309) - 55.0969] * t / 4.184);
+           }
+        }
     }
 }
