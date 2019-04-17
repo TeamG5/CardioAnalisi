@@ -6,7 +6,7 @@ using DataCardio;
 namespace DataCardio.Test
 {
     [TestClass]
-    public class UnitTest1
+    public class DataCardioTest
     {
         [TestMethod]
         public void Età_uguale_a_0()
@@ -57,16 +57,29 @@ namespace DataCardio.Test
             Assert.AreEqual(asp, ott);
         }
         [TestMethod]
-        public void Calorie()
+        public void Calorie_maschio()
         {
             string sesso = "Maschio";
             int a = 50;
             double p = 60;
             double t = 60;
             double f = 65;
-            string asp = "";
+            string asp = "113,813575525813";
             string ott = CardioLibrary.DataCardio.Calorie(sesso,a,p,t,f);
             Assert.AreEqual(asp, ott);
         }
+        [TestMethod]
+        public void Calorie_femmina()
+        {
+            string sesso = "femmine";
+            int a = 40;
+            double p = 76;
+            double t = 29;
+            double f = 65;
+            string asp = "146,953202676864";
+            string ott = CardioLibrary.DataCardio.Calorie(sesso, a, p, t, f);
+            Assert.AreEqual(asp, ott);
+        }
+        
     }
 }

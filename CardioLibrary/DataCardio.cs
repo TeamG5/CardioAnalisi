@@ -49,15 +49,26 @@ namespace CardioLibrary
         }
         public static string Calorie(string sesso,int a,double p,double t,double f)
         {
+            double c = 0;
             string risposta = "";
            if(sesso==""||a==0||p==0||t==0||f==0)
            {
                 risposta = "Attenzione i valori non possono essere accettati";
            }
-           else if(sesso=="maschio")
+
+           if(sesso =="Maschio")
            {
-                 double c =([(a * 0.2017) + (p * 0.199) + (f * 0.6309) - 55.0969] * t / 4.184);
+                  c = ((a * 0.2017) + (p * 0.199) + (f * 0.6309) - 55.0969) * t / 4.184;
+                  risposta = Convert.ToString(c);
            }
+
+           if(sesso=="femmine")
+           {
+                c = ((a * 0.074) + (p * 0.126) + (f * 0.4472) - 20.4022) * t / 4.184;
+                risposta = Convert.ToString(c);
+           }
+           
+            return risposta;
         }
     }
 }
