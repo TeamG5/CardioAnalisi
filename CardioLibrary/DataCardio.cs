@@ -52,22 +52,57 @@ namespace CardioLibrary
         }
 
         //Calcolo delle calorie bruciate
-        public static string CalorieBruciate(double F, double P, double T, string sesso)
+        public static string CalorieBruciate(double A, double F, double P, double T, string sesso)
         {
             string risposta = "";
             double calorie = 0;
-            if (F == 0 || P == 0 || T == 0)
+            if (A == 0 || F == 0 || P == 0 || T == 0 || sesso == "")
             {
                 risposta = "Errore";
             }
-            if (sesso == "")
+            else
             {
-                risposta = "Errore";
+                if (sesso == "uomo")
+                {
+                    calorie = (A * 0.2017) + (P * 0.199) + (F * 0.6309) - 55.0969;
+                    double var_appoggio = T / 4.184;
+                    calorie = calorie * var_appoggio;
+                    risposta = $"Hai bruciato {Math.Truncate(calorie)} calorie";
+                }
+                else
+                {
+                    calorie = (A * 0.074) - (P * 0.126) + (F * 0.4472) - 20.4022;
+                    double var_appoggio = T / 4.184;
+                    calorie = calorie * var_appoggio;
+                    risposta = $"Hai bruciato {Math.Truncate(calorie)} calorie";
+                }
             }
+            
+            return risposta;
+        }
 
-            if (sesso == "uomo")
+        //Calcolo della spesa energetica
+        public static string SpesaEnergetica(string a, double b, double c)
+        {
+            string risposta="";
+            double energia_spesa = 0;
+
+            if (a == "" || b == 0 || c == 0)
             {
-                
+                risposta = "Errore";
+            }
+            else
+            {
+                if (a == "corsa")
+                {
+                    energia_spesa = 0.9 * b * c;
+                    risposta = $"Hai speso {Math.Truncate(energia_spesa)} KCal";
+                }
+                else
+                {
+                    energia_spesa = 0.5 * b * c;
+                    risposta = $"Hai speso {Math.Truncate(energia_spesa)} KCal";
+                }
             }
 
             return risposta;
