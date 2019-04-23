@@ -107,5 +107,47 @@ namespace CardioLibrary
 
             return risposta;
         }
+
+        //Calcolo battiti con array
+        public static string BattitiGiornata(int[] a)
+        {
+            string risposta = "";
+            bool flag = false;
+            int ctr = -1;
+            double media_battiti = 0;
+            double variabilita_battito = 0;
+
+
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] == 0)
+                {
+                    if (flag == false)
+                    {
+                        flag = true;
+                        risposta = "Errore";
+                    }                  
+                }
+                ctr++;
+            }
+
+            if (flag == false)
+            {
+                Array.Sort(a);
+
+                for (int k = 0; k < a.Length; k++)
+                {
+                        media_battiti = media_battiti + a[k];                                                 
+                }
+                media_battiti = media_battiti / (ctr + 1);
+
+                variabilita_battito = a[ctr] - a[0];
+
+
+                risposta = $"La tua media giornaliera dei battiti cardiaci è di {Math.Truncate(media_battiti)} bpm. Il tuo battito cardiaco a riposo è di {a[0]} bpm. La variabilità del tuo battito cardiaco durante la giornata è di {Math.Truncate(variabilita_battito)} bpm. L'ordine crescente dei battiti cardiaci durante la giornata è {a[0]} {a[1]} {a[2]} {a[3]} {a[4]}.";                
+            }
+
+            return risposta;
+        }
     }
 }
