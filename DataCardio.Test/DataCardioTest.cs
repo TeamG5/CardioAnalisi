@@ -80,6 +80,25 @@ namespace DataCardio.Test
             string ott = CardioLibrary.DataCardio.Calorie(sesso, a, p, t, f);
             Assert.AreEqual(asp, ott);
         }
-        
-    }
+		[TestMethod]
+		public void Spesa_energetica_camminata()
+		{
+			string camminata = "camminata";
+			double km_percorsi = 7;
+			double kg_peso = 65;
+			string asp = "409,5";
+			string ott = CardioLibrary.DataCardio.Spesa(camminata,km_percorsi,kg_peso);
+			Assert.AreEqual(asp, ott);
+		}
+		[TestMethod]
+		public void Spesa_energetica_corsa()
+		{
+			string camminata = "camminata";
+			double km_percorsi = 12;
+			double kg_peso = 55;
+			string asp = "594";
+			string ott = CardioLibrary.DataCardio.Spesa(camminata, km_percorsi, kg_peso);
+			Assert.AreEqual(asp, ott);
+		}
+	}
 }

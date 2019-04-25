@@ -70,5 +70,20 @@ namespace CardioLibrary
            
             return risposta;
         }
-    }
+		public static string Spesa(string camminata,double km_percorsi,double kg_peso)
+		{
+			string risposta = "";
+			if(camminata=="camminata")
+		    {
+				risposta = (Convert.ToString(0.9 * km_percorsi * kg_peso));
+			}
+
+			if(camminata=="corsa")
+			{
+				risposta = (Convert.ToString(0.50 * km_percorsi * kg_peso));
+			}
+
+			return risposta;
+		}
+	}
 }
