@@ -100,5 +100,35 @@ namespace DataCardio.Test
 			string ott = CardioLibrary.DataCardio.Spesa(camminata, km_percorsi, kg_peso);
 			Assert.AreEqual(asp, ott);
 		}
+		//Calcolo battiti con array
+		[TestMethod]
+		public void BattitiGiornata1()
+		{
+			int[] battiti = new int[5];
+			battiti[0] = 0;
+			battiti[1] = 0;
+			battiti[2] = 0;
+			battiti[3] = 0;
+			battiti[4] = 0;
+
+			string risp_battiti = CardioLibrary.DataCardio.BattitiGiornata(battiti);
+			string risp_aspettata = "Errore";
+			Assert.AreEqual(risp_battiti, risp_aspettata);
+		}
+
+		[TestMethod]
+		public void BattitiGiornata2()
+		{
+			int[] battiti = new int[5];
+			battiti[0] = 65;
+			battiti[1] = 62;
+			battiti[2] = 94;
+			battiti[3] = 75;
+			battiti[4] = 68;
+
+			string risp_battiti = CardioLibrary.DataCardio.BattitiGiornata(battiti);
+			string risp_aspettata = $"La tua media giornaliera dei battiti cardiaci è di 72 bpm. Il tuo battito cardiaco a riposo è di 62 bpm. La variabilità del tuo battito cardiaco durante la giornata è di 32 bpm. L'ordine crescente dei battiti cardiaci durante la giornata è 62 65 68 75 94.";
+			Assert.AreEqual(risp_battiti, risp_aspettata);
+		}
 	}
 }
