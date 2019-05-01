@@ -223,4 +223,6 @@ namespace DataCardio.Test
             string risp_aspettata = $"La tua media giornaliera dei battiti cardiaci è di 72 bpm. Il tuo battito cardiaco a riposo è di 62 bpm. La variabilità del tuo battito cardiaco durante la giornata è di 32 bpm. L'ordine crescente dei battiti cardiaci durante la giornata è 62 65 68 75 94.";
             Assert.AreEqual(risp_battiti, risp_aspettata);
         }
+
+    }
 }
