@@ -7,6 +7,7 @@ namespace DataCardio.Test
     [TestClass]
     public class DataCardioTest
     {
+        //test battito maggiore
         [TestMethod]
         public void TestMaggioredi0()
         {
@@ -16,6 +17,7 @@ namespace DataCardio.Test
             Risp = CardioLibrary.DataCardio.BattitoMaggiore(battito);
         }
 
+        //test battito minore
         [TestMethod]
         public void TestMinoredi0()
         {
@@ -25,6 +27,7 @@ namespace DataCardio.Test
             Risp = CardioLibrary.DataCardio.BattitoMinore(battito);
         }
 
+        //test eta
         [TestMethod]
         public void TestEtà()
         {
@@ -52,6 +55,7 @@ namespace DataCardio.Test
             Assert.AreEqual(asp, ott);
         }
 
+        //test frequenza cardiaca (normale)
         [TestMethod]
         public void TestFrequenza()
         {
@@ -61,6 +65,7 @@ namespace DataCardio.Test
             Assert.AreEqual(asp, ott);
         }
 
+        //test frequenza cardiaca (tachicardia)
         [TestMethod]
         public void TestTachicardia()
         {
@@ -70,6 +75,7 @@ namespace DataCardio.Test
             Assert.AreEqual(asp, ott);
         }
 
+        //test frequenza cardiaca (Bradicardia)
         [TestMethod]
         public void TestBradicardia()
         {
