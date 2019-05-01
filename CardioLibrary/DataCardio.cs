@@ -33,7 +33,11 @@ namespace CardioLibrary
         public static string Valori(int Frequenza_Cardiaca)
         {
             string msg1 = "";
-            if(Frequenza_Cardiaca<60)
+			if(Frequenza_Cardiaca<=0)
+			{
+				msg1 = "Attenzione i valori non possono essere accettati";
+			}
+            else if(Frequenza_Cardiaca<60)
             {
                 msg1 = "Bradicardia";
             }
@@ -51,36 +55,78 @@ namespace CardioLibrary
         {
             double c = 0;
             string risposta = "";
-           if(sesso==""||a==0||p==0||t==0||f==0)
-           {
-                risposta = "Attenzione i valori non possono essere accettati";
-           }
+          
+			if(sesso!="")
+			{
+				if (sesso == "Maschio")
+				{
+					if (a <= 0 || p <= 0 || t <= 0 || f <= 0)
+					{
+						risposta = "Attenzione i valori non possono essere accettati";
+					}
+					else
+					{
+						c = ((a * 0.2017) + (p * 0.199) + (f * 0.6309) - 55.0969) * t / 4.184;
+						risposta = Convert.ToString(c);
+					}
 
-           if(sesso =="Maschio")
-           {
-                  c = ((a * 0.2017) + (p * 0.199) + (f * 0.6309) - 55.0969) * t / 4.184;
-                  risposta = Convert.ToString(c);
-           }
+				}
+				else if (sesso == "femmine")
+				{
+					if (a <= 0 || p <= 0 || t <= 0 || f <= 0)
+					{
+						risposta = "Attenzione i valori non possono essere accettati";
+					}
+					else
+					{
+						c = ((a * 0.074) + (p * 0.126) + (f * 0.4472) - 20.4022) * t / 4.184;
+						risposta = Convert.ToString(c);
+					}
 
-           if(sesso=="femmine")
-           {
-                c = ((a * 0.074) + (p * 0.126) + (f * 0.4472) - 20.4022) * t / 4.184;
-                risposta = Convert.ToString(c);
-           }
+				}
+			}
+			else
+			{
+				risposta = "Attenzione i valori non possono essere accettati";
+			}
+         
            
             return risposta;
         }
 		public static string Spesa(string camminata,double km_percorsi,double kg_peso)
 		{
 			string risposta = "";
-			if(camminata=="camminata")
-		    {
-				risposta = (Convert.ToString(0.9 * km_percorsi * kg_peso));
-			}
-
-			if(camminata=="corsa")
+			if(camminata!="")
 			{
-				risposta = (Convert.ToString(0.50 * km_percorsi * kg_peso));
+				if (camminata == "camminata")
+				{
+					if (km_percorsi <= 0 || kg_peso <= 0)
+					{
+						risposta = "Attenzione i valori non possono essere accettati";
+					}
+					else
+					{
+						risposta = (Convert.ToString(0.9 * km_percorsi * kg_peso));
+					}
+
+				}
+
+				if (camminata == "corsa")
+				{
+					if (km_percorsi <= 0 || kg_peso <= 0)
+					{
+						risposta = "Attenzione i valori non possono essere accettati";
+					}
+					else
+					{
+						risposta = (Convert.ToString(0.50 * km_percorsi * kg_peso));
+					}
+
+				}
+			}
+			else
+			{
+				risposta = "Attenzione i valori non possono essere accettati";
 			}
 
 			return risposta;

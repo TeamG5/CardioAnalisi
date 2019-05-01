@@ -56,7 +56,15 @@ namespace DataCardio.Test
             string ott = CardioLibrary.DataCardio.Valori(Frequenza_Cardiaca);
             Assert.AreEqual(asp, ott);
         }
-        [TestMethod]
+		[TestMethod]
+		public void Frequenza_Cardiaca_uguale_a_0()
+		{
+			int Frequenza_Cardiaca = 0;
+			string asp = "Attenzione i valori non possono essere accettati";
+			string ott = CardioLibrary.DataCardio.Valori(Frequenza_Cardiaca);
+			Assert.AreEqual(asp, ott);
+		}
+		[TestMethod]
         public void Calorie_maschio()
         {
             string sesso = "Maschio";
@@ -68,7 +76,19 @@ namespace DataCardio.Test
             string ott = CardioLibrary.DataCardio.Calorie(sesso,a,p,t,f);
             Assert.AreEqual(asp, ott);
         }
-        [TestMethod]
+		[TestMethod]
+		public void Calorie_maschio1()
+		{
+			string sesso = "";
+			int a = 50;
+			double p = 0;
+			double t = 0;
+			double f = 65;
+			string asp = "Attenzione i valori non possono essere accettati";
+			string ott = CardioLibrary.DataCardio.Calorie(sesso, a, p, t, f);
+			Assert.AreEqual(asp, ott);
+		}
+		[TestMethod]
         public void Calorie_femmina()
         {
             string sesso = "femmine";
@@ -81,6 +101,18 @@ namespace DataCardio.Test
             Assert.AreEqual(asp, ott);
         }
 		[TestMethod]
+		public void Calorie_femmina1()
+		{
+			string sesso = "femmine";
+			int a = 40;
+			double p = 76;
+			double t = 0;
+			double f = 0;
+			string asp = "Attenzione i valori non possono essere accettati";
+			string ott = CardioLibrary.DataCardio.Calorie(sesso, a, p, t, f);
+			Assert.AreEqual(asp, ott);
+		}
+		[TestMethod]
 		public void Spesa_energetica_camminata()
 		{
 			string camminata = "camminata";
@@ -91,12 +123,32 @@ namespace DataCardio.Test
 			Assert.AreEqual(asp, ott);
 		}
 		[TestMethod]
-		public void Spesa_energetica_corsa()
+		public void Spesa_energetica_camminata1()
 		{
 			string camminata = "camminata";
+			double km_percorsi = 0;
+			double kg_peso = 65;
+			string asp = "Attenzione i valori non possono essere accettati";
+			string ott = CardioLibrary.DataCardio.Spesa(camminata, km_percorsi, kg_peso);
+			Assert.AreEqual(asp, ott);
+		}
+		[TestMethod]
+		public void Spesa_energetica_corsa()
+		{
+			string camminata = "corsa";
 			double km_percorsi = 12;
 			double kg_peso = 55;
-			string asp = "594";
+			string asp = "330";
+			string ott = CardioLibrary.DataCardio.Spesa(camminata, km_percorsi, kg_peso);
+			Assert.AreEqual(asp, ott);
+		}
+		[TestMethod]
+		public void Spesa_energetica_corsa1()
+		{
+			string camminata = "";
+			double km_percorsi = 12;
+			double kg_peso = 0;
+			string asp = "Attenzione i valori non possono essere accettati";
 			string ott = CardioLibrary.DataCardio.Spesa(camminata, km_percorsi, kg_peso);
 			Assert.AreEqual(asp, ott);
 		}
